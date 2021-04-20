@@ -57,13 +57,13 @@ export default function ElevateAppBar(props) {
                     <Link className="nav-link" to="/">Home</Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/about">About</Link>
+                    <Link className="nav-link" to="/#!">About</Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="/reservations">Reservations</a>
+                    <a className="nav-link" href="/#!">Reservations</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="/contact">Contact Us</a>
+                    <a className="nav-link" href="/#!">Contact Us</a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="#!">Our Fleets & Rates</a>

@@ -31,11 +31,11 @@ export default function Home () {
           <Grid item xs={12} md={12}>
             <Paper elevation={5} id="Paper" data-aos="fade-right">
               <h2>We Are</h2>
-              <a href="/about"><img className="img-fluid fadeImage" src={logo} alt="First slide"/><br/></a>
+              <a href="/#!"><img className="img-fluid fadeImage" src={logo} alt="First slide"/><br/></a>
             </Paper>
           </Grid>
           <Grid item xs={12} className="positionBottom">
-            <a href="/reservations" data-aos="fade-in"><button type="button" className="btn btn-success">Make Reservations Now </button></a>
+            <a href="/#!" data-aos="fade-in"><button type="button" className="btn btn-success">Make Reservations Now </button></a>
           </Grid>
         </Grid>
       </header>
