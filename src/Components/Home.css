@@ -1,0 +1,72 @@
+
+#Paper{
+  text-align: left;
+  font-weight: bold;
+  width: 600px;
+  height: 400px;
+  float: left;
+  margin: 100px 10px 10px 50px;
+  padding: 10px;
+  background-color:  rgba(0, 0, 0, 0.0)
+}
+#Paper:hover{
+  background-color:  rgba(0, 0, 0, 0.2);
+  width: 610px;
+}
+.positionBottom{
+  padding-top: 230px;
+}
+button{
+  height: 50px;
+}
+main{
+  margin: 20px auto;
+}
+hr{
+  border-bottom: 1px solid white;
+}
+
+.clearText{
+  text-shadow: 1px 1px black;
+}
+.feature{
+  width: 50px;
+  background-color: green;
+}
+.icon{
+  font-size: 50px;
+}
+@media only screen and (min-width: 768px) {
+  .homeHeader{
+    background-image: url("../images/aerial-Okovango-Delta.jpeg");
+    background-color: green;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .homeHeader{
+    background-image: url("../images/makgadikgadi-pans-texture.jpg");
+    background-color: red;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  #Paper{
+    margin: 100px 10px 10px 10px;
+    width: auto;
+    height: auto;
+    float:none;
+  }
+  #Paper:hover{
+    background-color:  rgba(0, 0, 0, 0.2);
+    width: auto;
+    height: auto;
+  }
+  .positionBottom{
+    padding-top: 20px;
+    float: left;
+  }
+
+}
