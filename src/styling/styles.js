@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) =>({
   },
   darkMainBg:{
     backgroundColor: '#651f11',
-    color: '#f0be08'
+    color: '#40130a'
   },
   darkMainColor:{
     color: '#421714'

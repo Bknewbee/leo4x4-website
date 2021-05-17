@@ -1,9 +1,17 @@
-
+h2{
+    font-family: 'Finger Paint',serif;
+}
+hr.line{
+  border-bottom: solid #40130a 1px;
+}
+#Paper h2{
+  font-size: 3.5em;
+}
 #Paper{
   text-align: left;
   font-weight: bold;
   width: 600px;
-  height: 400px;
+  height: 410px;
   float: left;
   margin: 100px 10px 10px 50px;
   padding: 10px;
@@ -12,6 +20,9 @@
 #Paper:hover{
   background-color:  rgba(0, 0, 0, 0.2);
   width: 610px;
+}
+#Paper a{
+  color: #40130a;
 }
 .positionBottom{
   padding-top: 230px;
@@ -35,6 +46,28 @@ hr{
 }
 .icon{
   font-size: 50px;
+}
+.image1{
+  overflow: hidden;
+}
+.image1 img{
+  min-height: 200px;
+}
+.image1 img:hover{
+  transform: scale(1.5);
+  filter: brightness(50%);
+  -webkit-transition: -webkit-transform 1s;
+  transition: transform 1s;
+}
+
+#Home .carousel-item{
+  height: 60vh;
+  padding: 20px;
+}
+#Home .carousel img{
+  max-height: 100%;
+  box-shadow: 1px 1px 10px 0 black;
+  border-radius: 10px;
 }
 @media only screen and (min-width: 768px) {
   .homeHeader{

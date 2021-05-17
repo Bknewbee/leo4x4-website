@@ -5,7 +5,15 @@
   background-color: #e0cf6e;
   box-shadow: 0 1px 10px 0 black;
 }
-
+#AppBar{
+    font-family: 'Finger Paint',serif;
+}
+#AppBar a{
+  color: #40130a;
+}
+#AppBar .nav-link:hover{
+  border-bottom: solid 2px black;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

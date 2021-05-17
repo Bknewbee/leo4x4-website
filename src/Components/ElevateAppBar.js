@@ -43,7 +43,7 @@ export default function ElevateAppBar(props) {
     <React.Fragment>
       <CssBaseline />
       <ElevationScroll {...props}>
-        <AppBar >
+        <AppBar id="AppBar">
           <Toolbar className={"navbar navbar-expand-lg justify-content-between fixed-top navbar-light " + classes.lightMainBG +" "+classes.darkMainColor}>
               <a className="navbar-brand" href="/">
                 <img src={logo} width="150" height="100" alt="Leo's 4x4 Company Logo"/>
@@ -60,7 +60,7 @@ export default function ElevateAppBar(props) {
                     <Link className="nav-link" to="/#!">About</Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="/#!">Reservations</a>
+                    <a className="nav-link" href="/reservations">Reservations</a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="/#!">Contact Us</a>
