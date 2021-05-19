@@ -286,7 +286,6 @@ class Reservations extends Component {
   render(){
     return(
       <div className="container reservations">
-
         <form onSubmit={this.handleSubmit}>
           <h1>Reservations</h1>
           <div className="form-group row">

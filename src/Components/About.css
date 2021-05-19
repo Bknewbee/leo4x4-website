@@ -1,0 +1,72 @@
+#About header p{
+  text-align: left;
+  font-size: 0.8em;
+}
+#About header h2{
+  display: none;
+  font-size: 3em;
+  padding: 0px 20px 20px 20px;
+  text-align: left;
+}
+#About main{
+  min-height: 50vh;
+}
+#About main h2{
+
+  font-size: 4em;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+#About main p{
+  padding-left: 50px;
+  text-align: left;
+  font-size: 1.3em;
+  overflow: auto;
+}
+#About main .card{
+  margin: 10px auto;
+}
+
+@media only screen and (min-width: 768px) {
+  #About header {
+    background-image: url("../images/camping-fire.jpg");
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: 80% 70%;
+    padding-top: 170px;
+  }
+  #About header img{
+    margin: 0px;
+    border: 5px solid white;
+    padding: 20px
+  }
+  #About header h2{
+    color: white;
+    border: 5px solid white;
+    align-content: flex-end;
+    width: 450px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #About header {
+    background-image: url("../images/image2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-top: 100px;
+  }
+  #About header img{
+    margin: 0px auto;
+    border: 5px solid white;
+    padding: 20px
+  }
+  #About header h2{
+    margin: 0 auto;
+    border: 5px solid black;
+    width: 400px;
+  }
+  #About main p{
+    padding: 10px;
+  }
+}

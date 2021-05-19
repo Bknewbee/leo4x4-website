@@ -2,6 +2,8 @@
   border: solid black 2px;
   border-radius: 10px;
   padding: 7px;
+  width: 700px;
+  margin: auto;
 }
 .reservations{
   margin-top: 110px;
@@ -25,7 +27,7 @@
   font-weight: bold;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 768px) {
   .reservations{
     width: 100%;
   }

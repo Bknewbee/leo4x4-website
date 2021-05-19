@@ -5,10 +5,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
-import {
-  Link
-} from "react-router-dom";
-
 import  useStyles from '../styling/styles';
 import logo from '../logo.png';
 
@@ -54,10 +50,10 @@ export default function ElevateAppBar(props) {
               <div className="collapse navbar-collapse" id="navbarHome">
                 <ul className="navbar-nav  ml-auto">
                   <li className="nav-item ">
-                    <Link className="nav-link" to="/">Home</Link>
+                    <a className="nav-link" href="/">Home</a>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/#!">About</Link>
+                    <a className="nav-link" href="/about">About</a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="/reservations">Reservations</a>
@@ -66,7 +62,7 @@ export default function ElevateAppBar(props) {
                     <a className="nav-link" href="/#!">Contact Us</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#!">Our Fleets & Rates</a>
+                    <a className="nav-link" href="/#!">Our Fleets & Rates</a>
                   </li>
                 </ul>
               </div>

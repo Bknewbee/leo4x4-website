@@ -69,6 +69,10 @@ hr{
   box-shadow: 1px 1px 10px 0 black;
   border-radius: 10px;
 }
+.carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        -webkit-filter: invert(100%);
+}
 @media only screen and (min-width: 768px) {
   .homeHeader{
     background-image: url("../images/aerial-Okovango-Delta.jpeg");

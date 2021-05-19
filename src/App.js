@@ -9,6 +9,7 @@ import { Typography } from '@material-ui/core';
 //import files
 import './App.css';
 import Home from './Components/Home';
+import About from './Components/About';
 import Reservations from './Components/Reservations'
 import ElevateAppBar from './Components/ElevateAppBar';
 
@@ -51,6 +52,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route exact path="/about">
+            <About />
           </Route>
           <Route exact path="/reservations">
             <Reservations />

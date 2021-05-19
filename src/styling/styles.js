@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) =>({
     color: '#f0be08'
   },
   //Home
-  homeHeader:{
+  header:{
     minHeight: "100vh",
     fontSize: `calc(10px + 2vmin)`
   },
