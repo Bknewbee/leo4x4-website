@@ -28,7 +28,7 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .reservations{
+  .reservations form{
     width: 100%;
   }
 }
