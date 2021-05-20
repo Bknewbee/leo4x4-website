@@ -1,0 +1,32 @@
+#Contact .paper{
+  margin-bottom: 15%;
+  padding: 10px;
+}
+#Contact p{
+  font-size: .5em;
+  text-align: left;
+  margin: 0px 0px 30px 0px;
+}
+#Contact form{
+  border: 1px solid black;
+  padding: 10px;
+}
+#Contact button{
+  width: 90%;
+  background-color: green;
+  border-radius: 30px;
+  height: 40px;
+  padding: 0px;
+}
+@media only screen and (min-width: 768px) {
+  #Contact .paper{
+    width: 700px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #Contact .paper{
+    margin-bottom: 30%;
+    width: 100%;
+  }
+}

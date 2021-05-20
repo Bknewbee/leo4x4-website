@@ -1,0 +1,8 @@
+#AppBar{
+  box-shadow: 0 1px 10px 0 black;
+  padding: 0px;
+  margin: 0px;
+}
+#AppBar img{
+  height: 60px;
+}

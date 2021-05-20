@@ -33,16 +33,16 @@ export default function Home () {
 
   return (
     <div id="Home">
-      <header className={classes.header +" "+ classes.darkMainBg +" homeHeader"}>
-        <Grid container spacing={0}>
+      <header className={classes.header +" "+ classes.darkMainBg +" homeHeader"} style={{position:"relative"}}>
+        <Grid container spacing={0} >
           <Grid item xs={12} md={12}>
             <Paper elevation={5} id="Paper" data-aos="fade-right">
               <h2>WE ARE</h2>
               <a href="/about"><img className="img-fluid" src={logo} alt="First slide"/><br/></a>
             </Paper>
           </Grid>
-          <Grid item xs={12} className="positionBottom">
-            <a href="/reservations" data-aos="fade-in"><button type="button" className="btn btn-success">Make Reservations Now </button></a>
+          <Grid item xs={12} className="">
+            <a href="/reservations" data-aos="fade-in" style={{position: "absolute", bottom:"150px",left:"50%"}}><button type="button" className="btn btn-success">Make Reservations Now </button></a>
           </Grid>
         </Grid>
       </header>

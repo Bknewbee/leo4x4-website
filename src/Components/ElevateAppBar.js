@@ -6,6 +6,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 import  useStyles from '../styling/styles';
+import "./ElevatorAppBar.css"
 import logo from '../logo.png';
 
 function ElevationScroll(props) {
@@ -59,7 +60,7 @@ export default function ElevateAppBar(props) {
                     <a className="nav-link" href="/reservations">Reservations</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="/#!">Contact Us</a>
+                    <a className="nav-link" href="/contact">Contact Us</a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="/#!">Our Fleets & Rates</a>

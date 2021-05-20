@@ -535,7 +535,7 @@ class Reservations extends Component {
             </div>
           </div>
           <div>
-          <input type="submit" value="Submit"  />
+          <input type="submit" value="Submit" className="btn" disabled style={{backgroundColor:"green",width:"50%",marginBottom:"20px"}}/>
             <p>GPS is pre-loaded with comprehensive Tracks for Africa maps.<br/> GPS is charged per trip.</p>
             <p><b>Additional Notes:</b></p>
             <p>Comprehensive vehicle handovers are only offered in Maun</p>
