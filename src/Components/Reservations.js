@@ -8,6 +8,9 @@ class Reservations extends Component {
     super(props);
     this.state = {
       formControls:{
+        termsConditions:{
+          value: false
+        },
         selectedSeason: {
           value: "Peak Season"
         },
@@ -146,7 +149,8 @@ class Reservations extends Component {
       insuranceMultiplier: {"Standard Insurance Excess": 0.0, "Reduced Insurance Excess": 250.00, "Max Reduced Insurance Excess": 450.00},
       location: {"Maun": 0.0,"Kasane": 0.0,"Gaborone": 2500.00,"Bulawayo": 3000.00,"Francistown": 2000.00,"Harare": 6000.00,"Livinstone": 4000.00,"Victoria Falls": 2500.00,"Windhoek":5000.00},
       errors: {},
-      input: {}
+      input: {},
+      msg:null
 
     }
     this.handleChange = this.handleChange.bind(this);
@@ -174,7 +178,7 @@ class Reservations extends Component {
            }
        });
 
-       console.log(value);
+       //console.log(value);
    }
    handleToggle(event){
      const name = event.target.name;
@@ -196,7 +200,7 @@ class Reservations extends Component {
 
      let name = event.target.name;
      let value = event.target.value;
-
+     /* Repaire selecting dates
      if(new Date(value).getTime() <= new Date().getTime()){
        value = ""
        this.setState({
@@ -242,7 +246,7 @@ class Reservations extends Component {
          })
          return false;
        }
-     }
+     }*/
 
      this.setState({
          formControls: {
@@ -279,7 +283,7 @@ class Reservations extends Component {
            x.selectedPeriod.value = "3-7 Days";
            x.period.value = 0
            this.setState({x})
-           value = ""
+           /*
            this.setState({
                formControls: {
                    ...this.state.formControls,
@@ -290,7 +294,7 @@ class Reservations extends Component {
                }
            })
            alert("Minimum rental period is 3 Days")
-           console.error("Invalid date");
+           console.error("Invalid date");*/
            return false
          }
 
@@ -339,28 +343,20 @@ class Reservations extends Component {
    //send a post of the form
    postForm(event){
 
-     let url = `/api/addbooking`;
+     let url = `http://localhost:5000/api/reservations`;
      const formData = new FormData(event);
+     const info = {}
 
-     for (var pair of formData.entries()) {
-        console.log(pair[0]+ ', ' + pair[1]);
-      }
-      //return console.log('return');
 
      const config = {
        headers: {
-         'content-type': 'multipart/form-data'
+         withCredentials: true
        }
      }
      //append what needs to be added
+     /*
      if(this.state.formControls.satallitePhoneAccess.value === false){
        formData.append("satallitePhoneAccess", this.state.formControls.satallitePhoneAccess.value);
-     }
-     if(this.state.formControls.gpsAccess.value === false){
-       formData.append("gpsAccess", this.state.formControls.gpsAccess.value);
-     }
-     if(this.state.formControls.groundTentAccess.value === false){
-       formData.append("groundTentAccess", this.state.formControls.groundTentAccess.value);
      }
      if(this.state.formControls.callOutAccess.value === false){
        formData.append("callOutAccess", this.state.formControls.callOutAccess.value);
@@ -368,26 +364,39 @@ class Reservations extends Component {
      if(this.state.formControls.afterHoursAccess.value === false){
        formData.append("afterHoursAccess", this.state.formControls.afterHoursAccess.value);
      }
+     */
+     if(this.state.formControls.gpsAccess.value === false){
+       formData.append("gpsAccess", this.state.formControls.gpsAccess.value);
+     }
+     if(this.state.formControls.groundTentAccess.value === false){
+       formData.append("groundTentAccess", this.state.formControls.groundTentAccess.value);
+     }
      if(this.state.formControls.cleaningAccess.value === false){
        formData.append("cleaningAccess", this.state.formControls.cleaningAccess.value);
      }
+     formData.append("period", this.state.formControls.period.value);
 
-     return axios.post(url, formData, config);
+     for (var pair of formData.entries()) {
+        //console.log(pair[0]+ ', ' + pair[1]);
+        info[pair[0]] = pair[1];
+      }
+      //return console.log('return');
+
+     return axios.post(url, info, config);
    }
 
    handleSubmit(event) {
      event.preventDefault();
-
+/*
      const formData = new FormData(event.target);
      let period = 0;
-     let info = {};
 
+     let info = {};
      for (var pair of formData.entries()) {
         console.log(pair[0]+ ', ' + pair[1]);
         info[pair[0]] = pair[1];
       }
 
-      //console.log(new Date(info.startDate)+ "\n" +new Date(info.endDate));
       period = Math.abs(new Date(info.startDate) - new Date(info.endDate))/86400000;
       console.log(period);
       if(period > 24){
@@ -401,7 +410,7 @@ class Reservations extends Component {
       }else{
         console.log("> 3");
       }
-
+*/
       //console.log("today is "+today + " \n start date is "+Date.parse(info.startDate.split("-")));
 
      if(this.validate()){
@@ -409,6 +418,7 @@ class Reservations extends Component {
        this.postForm(event.target)
        .then((res)=>{
          console.log(res);
+         this.setState({msg: res.data.msg})
        })
        .catch((err)=>{
          console.log(err);
@@ -419,7 +429,6 @@ class Reservations extends Component {
      let input = this.state.input;
      let errors = {};
      let isValid = true;
-
      if (!input["firstName"]){
        isValid = false;
        errors["firstName"] = "Please enter your first name.";
@@ -460,6 +469,15 @@ class Reservations extends Component {
        errors["physicalAddress"] = "Please enter your physical address.";
      }
 
+     if(this.state.formControls.period.value === 0){
+       isValid = false;
+       errors["endDate"] = "Please enter valid dates";
+     }
+     if(this.state.formControls.termsConditions.value === false){
+       isValid=false;
+       errors["termsConditions"] = "Please read and accept terms and conditions in order to submit reservation."
+     }
+
      this.setState({
        errors: errors
      });
@@ -469,7 +487,6 @@ class Reservations extends Component {
      return isValid;
    }
    equipmentTotal = () =>{
-
      if(this.state.formControls.selectedEquipment.value === "Unequiped"){
        return this.state.unequiped.[this.state.formControls.selectedPeriod.value]
      }else if (this.state.formControls.selectedEquipment.value === "2 Pax") {
@@ -481,7 +498,7 @@ class Reservations extends Component {
   render(){
     return(
       <div className="container reservations">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} encType="multipart/form-data">
           <h1>Reservations</h1>
           <div className="form-group row">
             <div className="col-md-12"><h2>Personal Details</h2></div>
@@ -531,25 +548,33 @@ class Reservations extends Component {
             <div className="col-md-6">
             <small htmlFor="endDate" >To Date:</small>
             <input type="date" className="form-control" id="end-data" name="endDate" onChange={this.handleDates} value={this.state.formControls.endDate.value}></input>
+            <div className="text-danger">{this.state.errors.endDate}</div>
             </div>
+
           </div>
 
           <div className="form-group row">
-            <div className="col-md-12">
-            <small>Season</small>
-            {/*
-            <select id="season" className="form-control" name="selectedSeason" value="this.state.formControls.selectedSeason.value" onChange={this.handleChange}>
-              {this.state.seasons.value.map((e, i)=>{
-                return <option key={i}>{e}</option>
-              })}
-            </select>
-            */}
-            <select className="form-control" value={this.state.formControls.selectedSeason.value} name="selectedSeason" onChange={this.handleChange}>
-              {this.state.seasons.map((season, i) => (
-                <option key={i} value={season.value}>{season.label}</option>
-              ))}
-            </select>
-            </div>
+            {
+              this.state.formControls.period.value === 0 ?
+              <div></div>
+              :
+              <div className="col-md-12">
+              <small>Season</small>
+              {/*
+              <select id="season" className="form-control" name="selectedSeason" value="this.state.formControls.selectedSeason.value" onChange={this.handleChange}>
+                {this.state.seasons.value.map((e, i)=>{
+                  return <option key={i}>{e}</option>
+                })}
+              </select>
+              */}
+              <select className="form-control" value={this.state.formControls.selectedSeason.value} name="selectedSeason" onChange={this.handleChange}>
+                {this.state.seasons.map((season, i) => (
+                  <option key={i} value={season.value}>{season.label}</option>
+                ))}
+              </select>
+              </div>
+            }
+
             <div className="col-12 py-2">
               <small>Period</small>
             </div>
@@ -742,9 +767,45 @@ class Reservations extends Component {
             <p>GPS is pre-loaded with comprehensive Tracks for Africa maps.<br/> GPS is charged per trip. <br/> After hours fee is <b>P600.00</b>.<br/> Satallite phone is provided by a third party.<br/> Call out rate is charged at <b>P20.00</b> per kilometer from Maun.</p>
             <p><b>Additional Notes:</b></p>
             <p>Comprehensive vehicle handovers are only offered in Maun</p>
+            <div className="row">
+              <div className="col-6">
+                <input className="form-check-input py-2" type="checkbox" id="item-4" name="termsConditions" value={this.state.formControls.groundTentAccess.value} onChange={this.handleToggle}></input>
+                <label className="form-check-label" htmlFor="item-4">Terms and Conditions</label>
+              </div>
+            </div>
+            <div className="text-danger">{this.state.errors.termsConditions}</div>
+            <p align="right" type="button" className="btn"  data-toggle="modal" data-target="#termsConditions">
+              Terms and Conditions
+            </p>
           </div>
-          <input type="submit" disabled value="Submit"  className="btn" style={{backgroundColor:"green",width:"50%",marginBottom:"20px"}}/>
+          <input type="submit" value="Submit"  className="btn" style={{backgroundColor:"green",width:"50%",marginBottom:"20px"}}/>
+          {
+            this.state.msg ?
+            <div className={this.state.msg.param}>{this.state.msg.text}</div>
+            :
+            <div></div>
+          }
         </form>
+
+
+        <div class="modal fade" id="termsConditions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Terms and Conditions</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
     )

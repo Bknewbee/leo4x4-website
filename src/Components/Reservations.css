@@ -26,6 +26,16 @@
   text-decoration: underline;
   font-weight: bold;
 }
+.reservations p.btn{
+  border-radius: 2px;
+  text-align: center;
+  margin: 10px 0px;
+  padding: 0px 3px;
+  background-color: grey;
+}
+.reservations p.btn:hover{
+  cursor: pointer;
+}
 
 @media only screen and (max-width: 768px) {
   .reservations form{
