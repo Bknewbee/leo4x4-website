@@ -343,7 +343,7 @@ class Reservations extends Component {
    //send a post of the form
    postForm(event){
 
-     let url = `https://leo4x4.netlify.app/api/reservations`;
+     let url = `https://leo4x4-back-end.herokuapp.com/api/reservations`;
      const formData = new FormData(event);
      const info = {}
 
