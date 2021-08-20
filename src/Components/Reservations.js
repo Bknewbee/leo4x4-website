@@ -343,7 +343,7 @@ class Reservations extends Component {
    //send a post of the form
    postForm(event){
 
-     let url = `http://localhost:5000/api/reservations`;
+     let url = `https://leo4x4.netlify.app/api/reservations`;
      const formData = new FormData(event);
      const info = {}
 
