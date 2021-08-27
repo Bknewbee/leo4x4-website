@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {TextField} from '@material-ui/core';
 
 import "./Reservations.css"
 
@@ -34,6 +35,9 @@ class Reservations extends Component {
         },
         selectedLocation: {
           value: "Maun"
+        },
+        additionalRequests:{
+          value: ""
         },
         satallitePhoneAccess: {
           value: false
@@ -375,6 +379,18 @@ class Reservations extends Component {
        formData.append("cleaningAccess", this.state.formControls.cleaningAccess.value);
      }
      formData.append("period", this.state.formControls.period.value);
+
+     let total = (this.state.period.[this.state.formControls.selectedPeriod.value] + this.state.season.[this.state.formControls.selectedSeason.value]+
+     this.equipmentTotal()+
+     this.state.insurance.[this.state.formControls.selectedInsurance.value]+
+     this.state.insuranceMultiplier.[this.state.formControls.selectedInsurance.value]*this.state.formControls.period.value+
+     this.state.location.[this.state.formControls.selectedLocation.value]+
+     (this.state.formControls.gpsAccess.value ? 200.00 : 0.0)+
+     (this.state.formControls.groundTentAccess.value ? this.state.formControls.period.value*50.00 : 0.0)+
+     (this.state.formControls.cleaningAccess.value ? 350.00 : 0.0)
+   ).toFixed(2).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+
+   formData.append("total", total);
 
      for (var pair of formData.entries()) {
         //console.log(pair[0]+ ', ' + pair[1]);
@@ -764,6 +780,7 @@ class Reservations extends Component {
             </div>
           </div>
           <div>
+            <TextField className="form-control my-2" fullWidth label="Additional requests/enquiries" multiline variant="outlined" rows={4} value={this.state.formControls.additionalRequests.value} name="additionalRequests" onChange={this.handleChange}></TextField>
             <p>GPS is pre-loaded with comprehensive Tracks for Africa maps.<br/> GPS is charged per trip. <br/> After hours fee is <b>P600.00</b>.<br/> Satallite phone is provided by a third party.<br/> Call out rate is charged at <b>P20.00</b> per kilometer from Maun.</p>
             <p><b>Additional Notes:</b></p>
             <p>Comprehensive vehicle handovers are only offered in Maun</p>
